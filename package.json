@@ -13,7 +13,9 @@
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "generate:types": "payload generate:types",
     "db:up": "docker-compose up -d",
-    "db:down": "docker-compose down"
+    "db:down": "docker-compose down",
+    "docker:build": "docker build -t my-next-app .",
+    "docker:run": "docker run --rm -it -p 8081:80 my-next-app"
   },
   "engines": {
     "node": ">=18.19.0"
@@ -42,6 +44,7 @@
     "@types/react-dom": "^18.2.21",
     "autoprefixer": "^10.4.19",
     "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "tsx": "^4.7.1",
