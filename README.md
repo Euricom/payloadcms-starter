@@ -44,3 +44,7 @@ You need to use `dev@allaboutpayload.com` email.
 ### Related
 
 - [How to Integrate MongoDB (native) Into Your Next.js App](https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/)
+
+- [A COMPREHENSIVE GUIDE TO UPLOADING FILES WITH NEXT.JS](https://www.blog.brightcoding.dev/2024/02/18/a-comprehensive-guide-to-uploading-files-with-next-js/)
+  
+- [File-vault - file upload control (based on shadcn.ui)](https://github.com/ManishBisht777/file-vault/tree/master)

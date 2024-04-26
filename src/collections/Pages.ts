@@ -14,11 +14,11 @@ export const Pages: CollectionConfig = {
     {
       name: 'content',
       type: 'richText',
-      // editor: lexicalEditor({
-      //   features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
-      // }),
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+      }),
     },
-    // lexicalHTML('content', { name: 'content_html' }),
+    lexicalHTML('content', { name: 'content_html' }),
     {
       name: 'other',
       type: 'json',
