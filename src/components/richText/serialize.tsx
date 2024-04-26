@@ -82,7 +82,7 @@ const List = ({ node }: { node: Node }) => {
 export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
   return (
     <Fragment>
-      {content?.map((node, i) => {
+      {content?.map((node: any, i) => {
         if (isText(node)) {
           // // @ts-expect-error
           let text = <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />

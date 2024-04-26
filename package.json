@@ -14,8 +14,8 @@
     "generate:types": "payload generate:types",
     "db:up": "docker-compose up -d",
     "db:down": "docker-compose down",
-    "docker:build": "docker build -t my-next-app .",
-    "docker:run": "docker run --rm -it -p 8081:80 my-next-app"
+    "docker:build": "docker build --network=host -t my-next-app .",
+    "docker:run": "docker run --rm -it -p 3000:3000 my-next-app"
   },
   "engines": {
     "node": ">=18.19.0"

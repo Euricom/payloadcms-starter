@@ -15,6 +15,7 @@ export const Pages: CollectionConfig = {
       name: 'content',
       type: 'richText',
       editor: lexicalEditor({
+        // @ts-ignore
         features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
       }),
     },
