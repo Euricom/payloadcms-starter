@@ -26,6 +26,7 @@ export interface Config {
  */
 export interface User {
   id: string;
+  title?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
