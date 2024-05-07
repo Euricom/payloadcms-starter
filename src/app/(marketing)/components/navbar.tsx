@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
 import React, { useState } from "react";
+import { ModeToggle } from "@/components/ModeToggle";
 
 export default function Navbar() {
   const currentPath = usePathname();
@@ -33,6 +34,7 @@ export default function Navbar() {
         <Link className="flex items-center gap-2" href="/">
           LOGO
         </Link>
+        <ModeToggle />
         <div className="hidden md:flex gap-4">
           {links.map((link) => (
             <Link
