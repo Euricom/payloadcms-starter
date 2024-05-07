@@ -48,3 +48,12 @@ You need to use `dev@allaboutpayload.com` email.
 - [A COMPREHENSIVE GUIDE TO UPLOADING FILES WITH NEXT.JS](https://www.blog.brightcoding.dev/2024/02/18/a-comprehensive-guide-to-uploading-files-with-next-js/)
   
 - [File-vault - file upload control (based on shadcn.ui)](https://github.com/ManishBisht777/file-vault/tree/master)
+
+## Used tech
+
+- Javascript framework[Next.js](https://nextjs.org/)
+- Styling framework [Tailwind CSS](https://tailwindcss.com/)
+- Icons: [Lucide](https://lucide.dev/icons/)
+- Component library: [ShadCn/ui](https://shadcn-ui.vercel.app/)
+- Database: [MongoDB](https://www.mongodb.com/) 
+- CMS: [Payload](https://payloadcms.com/)
