@@ -23,9 +23,11 @@ export default function Navbar() {
       href: '/faq',
       label: 'FAQ',
     },
+    {
+      href: '/login',
+      label: 'Login',
+    },
   ];
-
-  const isCurrentPath = (href: string) => currentPath === href;
 
   const [sheetOpen, setSheetOpen] = useState(false);
 
