@@ -114,12 +114,6 @@ export default async () => {
           </div>
         </section>
       </main>
-    <div className="space-y-3">
-      <h1 className="text-xl font-bold">Test page</h1>
-      <Button>Click Me</Button>
-      <TestComponent />
-      <HtmlProse content={data.docs[0]?.content_html} />
-    </div>
     </>
   )
 }

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
 import React, { useState } from "react";
 import { ModeToggle } from "@/components/ModeToggle";
-import { Menu } from "lucide-react";
+import { Menu, Mountain } from "lucide-react";
 
 export default function Navbar() {
   const currentPath = usePathname();
@@ -30,57 +30,42 @@ export default function Navbar() {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <nav className="bg-background">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link className="flex items-center gap-2" href="/">
-          LOGO
-        </Link>
-        <ModeToggle />
-        <div className="hidden md:flex gap-4">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              className={`font-medium ${
-                isCurrentPath(link.href)
-                  ? "text-primary"
-                  : "text-gray-900 hover:text-primary hover:light"
-              }`}
-              href={link.href}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-          <SheetTrigger asChild>
-            <Button
-              className="md:hidden text-gray-500 bg-transparent hover:bg-primary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-gray-20"
-              size="icon"
-              variant="outline"
-            >
-              <Menu  className="h-6 w-6" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="bg-background text-primary">
-            <div className="grid w-[200px] p-4 gap-2">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  className={`text-xl font-medium ${
-                    isCurrentPath(link.href) ? "text-primary" : "text-gray-900"
-                  } hover:text-primary hover:light`}
-                  href={link.href}
-                  onClick={() => setSheetOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </SheetContent>
-        </Sheet>
+    <header className="bg-gray-900 text-gray-400 py-4 md:py-6">
+    <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <Mountain className="h-6 w-6 text-gray-400" />
+        <span className="text-gray-300 font-semibold text-lg">University SaaS</span>
       </div>
-    </nav>
+      <nav className="hidden md:flex items-center gap-6">
+      {links.map((link) => (
+        <Link className="hover:text-gray-300 transition-colors" key={link.href} href={link.href}>
+        {link.label}
+      </Link>
+      ))}
+      </nav>
+      <ModeToggle buttonClassName="bg-gray-900 hover:bg-gray-900 text-gray-50 hidden md:flex" />
+      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+        <SheetTrigger asChild>
+          <Button className="md:hidden" size="icon" variant="ghost">
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Toggle navigation menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right">
+          <div className="flex flex-col justify-between h-full">
+          <div className="grid gap-6 p-6">
+          {links.map((link) => (
+          <Link className="hover:text-gray-300 transition-colors" key={link.href} href={link.href}  onClick={() => setSheetOpen(false)}>
+            {link.label}
+          </Link>
+          ))}
+          </div>
+          <ModeToggle buttonClassName="self-end bg-gray-50 text-gray-900 hover:bg-gray-50/90 dark:bg-gray-900 dark:hover:bg-gray-900 dark:text-gray-50" />
+          </div>
+
+        </SheetContent>
+      </Sheet>
+    </div>
+  </header>
   );
 }
