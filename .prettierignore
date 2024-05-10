@@ -1,0 +1,5 @@
+src/app/(payload)/
+
+node_modules
+.next/
+.data/

@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload/types'
-import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical'
+import { CollectionConfig } from 'payload/types';
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -29,4 +29,4 @@ export const Pages: CollectionConfig = {
       type: 'text',
     },
   ],
-}
+};

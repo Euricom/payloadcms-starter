@@ -1,17 +1,17 @@
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
 // import { payloadCloud } from '@payloadcms/plugin-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload/config'
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import path from 'path';
+import { buildConfig } from 'payload/config';
 // import sharp from 'sharp'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'url';
 
-import { Users } from './collections/Users'
-import { Pages } from './collections/Pages'
-import { Media } from './collections/Media'
+import { Users } from './collections/Users';
+import { Pages } from './collections/Pages';
+import { Media } from './collections/Media';
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
@@ -36,4 +36,4 @@ export default buildConfig({
   // for this before reaching 3.0 stable
 
   // sharp,
-})
+});

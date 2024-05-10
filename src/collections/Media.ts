@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import { CollectionConfig } from 'payload/types';
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -9,4 +9,4 @@ export const Media: CollectionConfig = {
       type: 'text',
     },
   ],
-}
+};

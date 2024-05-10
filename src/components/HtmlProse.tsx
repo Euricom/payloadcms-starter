@@ -1,12 +1,12 @@
 export const HtmlProse = async ({ content }: { content: any }) => {
   if (!content) {
-    return null
+    return null;
   }
   return (
-    <div className="m-2 prose">
+    <div className='prose m-2'>
       <span dangerouslySetInnerHTML={{ __html: content }} />
     </div>
-  )
-}
+  );
+};
 
-export default HtmlProse
+export default HtmlProse;
