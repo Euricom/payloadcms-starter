@@ -9,7 +9,6 @@ import { ModeToggle } from '@/components/ModeToggle';
 import { Menu, Mountain } from 'lucide-react';
 
 export default function Navbar() {
-  const currentPath = usePathname();
   const links = [
     {
       href: '/',
