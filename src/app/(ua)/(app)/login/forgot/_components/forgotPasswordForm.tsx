@@ -1,23 +1,18 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-
+import { useAuth } from '@/components/providers/Auth.provider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useAuth } from '@/components/providers/Auth.provider';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 type FormData = {
   email: string;
-  password: string;
 };
 
-const LoginForm = () => {
-  const searchParams = useSearchParams();
-  const redirect = useRef(searchParams.get('redirect'));
-  const { login, user } = useAuth();
+const ForgotPasswordForm = (props: any) => {
+  const { user, forgotPassword } = useAuth();
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
 
@@ -32,21 +27,18 @@ const LoginForm = () => {
   } = useForm<FormData>({
     defaultValues: {
       email: 'test@test.com',
-      password: 'hoi',
     },
   });
 
   const onSubmit = useCallback(
     async (data: FormData) => {
       try {
-        await login(data);
-        if (redirect?.current) router.push(redirect.current as string);
-        else router.push('/app');
+        await forgotPassword(data);
       } catch (_) {
         setError('There was an error with the credentials provided. Please try again.');
       }
     },
-    [login, router]
+    [forgotPassword]
   );
 
   return (
@@ -60,25 +52,11 @@ const LoginForm = () => {
         register={register}
         error={errors.email}
       />
-      <Input
-        name='password'
-        label='Password'
-        required
-        type='password'
-        register={register}
-        error={errors.password}
-      />
-      <Link
-        className='text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50'
-        href='/login/forgot'
-      >
-        Forgot password?
-      </Link>
       <Button className='w-full' type='submit' disabled={isLoading}>
-        {isLoading ? 'Processing' : 'Sign In'}
+        {isLoading ? 'Processing' : 'Reset password'}
       </Button>
     </form>
   );
 };
 
-export default LoginForm;
+export default ForgotPasswordForm;

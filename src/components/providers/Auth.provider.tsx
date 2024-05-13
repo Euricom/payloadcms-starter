@@ -61,6 +61,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     fetchUser();
   }, [user]);
 
+  const forgotPassword = useCallback<ForgotPassword>(async (args) => {
+    const user = await makeCall('/api/users/forgot-password', 'POST', args);
+    setUser(user);
+    return user;
+  }, []);
+
+  const resetPassword = useCallback<ResetPassword>(async (args) => {
+    const user = await makeCall('/api/users/reset-password', 'POST', args);
+    setUser(user);
+    return user;
+  }, []);
+
   return (
     <Context.Provider
       value={{
@@ -68,14 +80,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser,
         login,
         logout,
-        resetPassword: async () => {
-          console.log('resetPassword');
-          return {} as User;
-        },
-        forgotPassword: async () => {
-          console.log('forgotPassword');
-          return {} as User;
-        },
+        resetPassword,
+        forgotPassword,
       }}
     >
       {children}
