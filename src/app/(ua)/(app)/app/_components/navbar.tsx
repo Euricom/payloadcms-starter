@@ -2,7 +2,15 @@ import { ModeToggle } from '@/components/ModeToggle';
 import { useAuth } from '@/components/providers/Auth.provider';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Home, LineChart, LogOut, Package, Package2, ShoppingCart, User } from 'lucide-react';
+import {
+  FileSliders,
+  LineChart,
+  LogOut,
+  Package,
+  Package2,
+  SquareArrowOutUpRight,
+  User,
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -25,6 +33,12 @@ const AppNavbar = () => {
       label: 'Test page',
       icon: <Package />,
     },
+    {
+      href: '/admin',
+      label: `Admin`,
+      icon: <FileSliders />,
+      external: true,
+    },
   ];
 
   const isCurrentPath = (path: string) => currentPath === path;
@@ -38,7 +52,7 @@ const AppNavbar = () => {
         </Link>
       </div>
       <nav className='flex-1 space-y-2 overflow-auto'>
-        {links.map(({ href, label, icon }) => (
+        {links.map(({ href, label, icon, external }) => (
           <Link
             key={href}
             className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
@@ -50,6 +64,7 @@ const AppNavbar = () => {
           >
             {icon}
             {label}
+            {external && <SquareArrowOutUpRight className='h-3 w-3' />}
           </Link>
         ))}
       </nav>

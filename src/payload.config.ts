@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import { Users } from './collections/Users';
 import { Pages } from './collections/Pages';
 import { Media } from './collections/Media';
+import PayloadBackToAppButton from './components/PayLoadBackToAppButton';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -16,6 +17,9 @@ const dirname = path.dirname(filename);
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      beforeNavLinks: [PayloadBackToAppButton],
+    },
   },
   collections: [Users, Pages, Media],
   editor: lexicalEditor({}),
