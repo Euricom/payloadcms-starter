@@ -14,6 +14,14 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+interface NavBarEntry {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+  external?: boolean;
+  role?: 'admin' | 'user';
+}
+
 const AppNavbar = () => {
   const { user, logout } = useAuth();
 
@@ -22,7 +30,7 @@ const AppNavbar = () => {
   };
 
   const currentPath = usePathname();
-  const links = [
+  const links: NavBarEntry[] = [
     {
       href: '/app',
       label: 'Dashboard',
@@ -38,6 +46,7 @@ const AppNavbar = () => {
       label: `Admin`,
       icon: <FileSliders />,
       external: true,
+      role: 'admin',
     },
   ];
 
@@ -52,30 +61,38 @@ const AppNavbar = () => {
         </Link>
       </div>
       <nav className='flex-1 space-y-2 overflow-auto'>
-        {links.map(({ href, label, icon, external }) => (
-          <Link
-            key={href}
-            className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-              isCurrentPath(href)
-                ? 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-50 dark:hover:bg-gray-600'
-                : 'text-gray-500 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50'
-            }`}
-            href={href}
-          >
-            {icon}
-            {label}
-            {external && <SquareArrowOutUpRight className='h-3 w-3' />}
-          </Link>
-        ))}
+        {links.map(({ href, label, icon, external, role }) => {
+          if (role && role === 'admin' && user?.role !== 'admin') {
+            return;
+          }
+
+          return (
+            <Link
+              key={href}
+              className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                isCurrentPath(href)
+                  ? 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-50 dark:hover:bg-gray-600'
+                  : 'text-gray-500 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50'
+              }`}
+              href={href}
+            >
+              {icon}
+              {label}
+              {external && <SquareArrowOutUpRight className='h-3 w-3' />}
+            </Link>
+          );
+        })}
       </nav>
       <Separator className='dark:bg-gray-600' />
       <div className='my-4 flex gap-2'>
         <div className='flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-50'>
-          {user?.title?.charAt(0).toUpperCase()}
-          {user?.title?.split(' ')?.at(1)?.charAt(0).toUpperCase()}
+          {user?.firstName && user?.firstName.charAt(0).toUpperCase()}
+          {user?.lastName && user?.lastName.charAt(0).toUpperCase()}
         </div>
         <div>
-          <p>{user?.title}</p>
+          <p>
+            {user?.firstName} {user?.lastName}
+          </p>
           <p className='text-sm text-slate-400'>{user?.email}</p>
         </div>
       </div>

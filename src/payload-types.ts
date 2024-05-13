@@ -26,7 +26,9 @@ export interface Config {
  */
 export interface User {
   id: string;
-  title?: string | null;
+  firstName: string;
+  lastName: string;
+  role?: ('admin' | 'user') | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -125,6 +127,7 @@ export interface PayloadMigration {
   updatedAt: string;
   createdAt: string;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
