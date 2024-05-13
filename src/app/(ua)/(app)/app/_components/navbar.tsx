@@ -98,9 +98,11 @@ const AppNavbar = () => {
       </div>
       <div className='mt-auto flex justify-center gap-4 pb-6'>
         <ModeToggle buttonVariant='outline' buttonSize='default' />
-        <Button variant={'outline'} size={'default'}>
-          <User className='h-[1.2rem] w-[1.2rem]' />
-        </Button>
+        <Link href={'/app/user'}>
+          <Button variant={'outline'} size={'default'}>
+            <User className='h-[1.2rem] w-[1.2rem]' />
+          </Button>
+        </Link>
         <Button variant={'outline'} size={'default'} onClick={logUserOut}>
           <LogOut className='h-[1.2rem] w-[1.2rem]' />
         </Button>
