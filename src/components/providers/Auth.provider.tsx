@@ -63,7 +63,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const forgotPassword = useCallback<ForgotPassword>(async (args) => {
     const user = await makeCall('/api/users/forgot-password', 'POST', args);
-    setUser(user);
     return user;
   }, []);
 
