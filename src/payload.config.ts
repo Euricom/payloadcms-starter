@@ -34,9 +34,9 @@ export default buildConfig({
     url: process.env.DATABASE_URI || '',
   }),
   email: nodemailerAdapter({
-    defaultFromAddress: '',
-    defaultFromName: '',
-    transport: await nodemailer.createTransport({
+    defaultFromAddress: 'test@euri.com',
+    defaultFromName: 'Michiel from euricom',
+    transport: nodemailer.createTransport({
       host: 'localhost',
       port: 1025,
       auth: {
